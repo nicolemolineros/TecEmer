@@ -1,5 +1,5 @@
 x = 5
-y = 2
+y = 10
 
 def suma(a, b):
 <<<<<<< HEAD
