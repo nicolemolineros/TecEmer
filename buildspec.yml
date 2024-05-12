@@ -14,7 +14,11 @@ phases:
       - cd ..
       - zip -g deployment_package.zip lambda_function.py
   post_build:
-    commands:
-      - echo "Updating lambda Function..."
-      - aws lambda update-function-code --function-name lambda-tecEmer --zip-file fileb://deployment_package.zip
-      - echo "DONE!!"
+   commands:
+  - echo "Updating lambda Function..."
+  - if aws lambda update-function-code --function-name lambda-tecEmer --zip-file fileb://deployment_package.zip; then
+      echo "Update successful: DONE!!";
+    else
+      echo "Failed to update Lambda function";
+      exit 1;
+    fi
